@@ -10,6 +10,7 @@ const notify = require('gulp-notify');
 const rigger = require('gulp-rigger');
 const autoprefixer = require('gulp-autoprefixer');
 const browserSync = require('browser-sync').create();
+const lec = require('gulp-line-ending-corrector');
 
 // sass
 gulp.task('sass', function() {
@@ -26,6 +27,7 @@ gulp.task('sass', function() {
         })
       )
       .pipe(sourcemaps.write())
+      .pipe(lec({ eolc: 'CRLF' }))
       .pipe(gulp.dest('./public/css')) );
 });
 
